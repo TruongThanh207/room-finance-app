@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "916979976797",
+    "project_id": "room-finance-manager-11f94",
+    "storage_bucket": "room-finance-manager-11f94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:916979976797:android:e4da3441eee1110cff1bb4",
+        "android_client_info": {
+          "package_name": "com.honghm.room_financal_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "916979976797-jqfpkpsn8j5dtho283mt5sbpgflbnkd4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.honghm.room_financal_manager",
+            "certificate_hash": "92ab68e1a0fba0341f881ff3f84babac810dd692"
+          }
+        },
+        {
+          "client_id": "916979976797-mk6p27uf3hfb0e1nj36i00qbhhg6snq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-4Dr5K1A1bIFiPkvRhKcBCxu868t3E-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "916979976797-mk6p27uf3hfb0e1nj36i00qbhhg6snq8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

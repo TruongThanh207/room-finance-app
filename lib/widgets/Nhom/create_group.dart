@@ -228,6 +228,7 @@ class _CreateGroupState extends State<CreateGroup> {
                       onPressed: () {
 
                         String idGroup =  FirebaseFirestore.instance.collection("Groups").doc().id;
+                        print(idGroup);
                         _group.addNewGroup(idGroup,_image, nameGroupController.text,fundGroupController.text, listIdMember, widget.user);
                         //Provider.of<GroupProviders>(context, listen: false).getListGroup(widget.user);
                         _group.getListGroup(widget.user);

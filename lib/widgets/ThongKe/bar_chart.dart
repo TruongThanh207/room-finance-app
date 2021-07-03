@@ -56,7 +56,7 @@ class BarChartThongKeThangState extends State<BarChartThongKeThang> {
               SizedBox(height: 10,),
               Center(
                 child: Text(
-                  'Từ ngày 21/12 - 27/12',
+                  'Từ ngày 27/6 - 4/7',
                   style: TextStyle(color: Colors.black54, fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ),

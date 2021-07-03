@@ -24,20 +24,23 @@ class HomeProviders with ChangeNotifier {
 
   List<ItemLoaiKhoanChi> dsLoaiKhoanChi =[];
 //List<Map<String, dynamic>> dsLoaiKhoanChi = [];
+
   Future<void> getListLoaiKhoanChi() async {
-  try{
-    List<ItemLoaiKhoanChi> ds = [];
-    await FirebaseFirestore.instance
-        .collection('typeExpense').get().then((value) {
+    try{
+      List<ItemLoaiKhoanChi> ds = [];
+      await FirebaseFirestore.instance
+          .collection('typeExpense').get().then((value) {
         value.docs.forEach((item) {
           ds.add(new ItemLoaiKhoanChi(item.data()["nameExpense"],item.data()["iconExpense"]));
         });
         dsLoaiKhoanChi = ds;
         notifyListeners();
-    });
-  }catch(e){
+        print("ds22 : $dsLoaiKhoanChi");
+      });
+    }catch(e){
 
-  }
+    }
+
 }
   File _image;
 

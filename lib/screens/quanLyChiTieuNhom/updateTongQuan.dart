@@ -249,7 +249,7 @@ class _UpdateTongQuanState extends State<UpdateTongQuan> {
                         child: RaisedButton(
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(Radius.circular(25))),
-                          onPressed: (){
+                          onPressed:  (){
 
                             _key.currentState.showSnackBar(SnackBar(
                               backgroundColor: Colors.green,
@@ -258,6 +258,7 @@ class _UpdateTongQuanState extends State<UpdateTongQuan> {
                             Navigator.pop(context);
                           },
                           child: Text("Thêm", style: TextStyle(fontSize: 20),),
+
                         ),
                       ),
 

@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:room_financal_manager/models/KhoanChiCaNhan.dart';
+import 'package:room_financal_manager/providers/caNhan_providers.dart';
+import 'package:room_financal_manager/screens/quanLyChiTieuCaNhan/person_manager.dart';
 import 'package:room_financal_manager/widgets/ThongKe/line_chart.dart';
 
 class InfoCard extends StatelessWidget {
@@ -8,6 +11,7 @@ class InfoCard extends StatelessWidget {
   final String icon;
   double TongChi;
   List<double> dsTienChi;
+
   // double TongThu;
   // List<double> dsTienThu;
   final Function press;
@@ -21,7 +25,6 @@ class InfoCard extends StatelessWidget {
      // this.dsTienThu,
     this.press,
   }) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {

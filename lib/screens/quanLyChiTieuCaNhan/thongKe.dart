@@ -26,6 +26,7 @@ class _ThongKeState extends State<ThongKe> {
     super.initState();
     _refreshController = RefreshController(initialRefresh: false);
 
+
   }
 
 
@@ -55,78 +56,99 @@ class _ThongKeState extends State<ThongKe> {
   @override
   Widget build(BuildContext context) {
     HomeProviders _home = Provider.of<HomeProviders>(context);
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        SizedBox(height: 60,),
-        Container(
-          height: 30,
-          width: 100,
-          padding: EdgeInsets.only(left: 10),
-          decoration: BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(
-                      width: 1,
-                      color: Colors.black54
+    return SmartRefresher(
+        controller: _refreshController,
+        onRefresh: _onRefresh,
+        onLoading: _onLoading,
+        header: WaterDropMaterialHeader(
+          backgroundColor: Colors.green,
+        ),
+        footer: CustomFooter(
+          builder: (BuildContext context,LoadStatus mode){
+            Widget body ;
+            body =  CupertinoActivityIndicator();
+            return Container(
+
+              height: 55.0,
+              child: Center(child:body),
+            );
+          },
+        ),
+        enablePullUp: false,
+        enablePullDown: true,
+        child:  ListView(
+          shrinkWrap: true,
+          children: [
+            SizedBox(height: 60,),
+            Container(
+              height: 30,
+              width: 100,
+              padding: EdgeInsets.only(left: 10),
+              decoration: BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(
+                          width: 1,
+                          color: Colors.black54
+                      )
                   )
-              )
-          ),
-          child: Text("Loại chi tiêu", style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green),),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: Text("Thống kê khoản chi trong tháng ${ DateTime.now().month} theo loại chi tiêu"),
-        ),
-        Container(
-            padding: EdgeInsets.only(left: 20, top: 10, right: 20, bottom: 20),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              // color: kPrimaryColor.withOpacity(0.03),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(50),
-                bottomRight: Radius.circular(50),
               ),
+              child: Text("Loại chi tiêu", style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green),),
             ),
-            child: Wrap(
-              spacing: 20,
-              runSpacing: 20,
-              children: widget.listInfoCard,
-            )
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text("Thống kê khoản chi trong tháng ${ DateTime.now().month} theo loại chi tiêu"),
+            ),
+            Container(
+                padding: EdgeInsets.only(left: 20, top: 10, right: 20, bottom: 20),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  // color: kPrimaryColor.withOpacity(0.03),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(50),
+                  ),
+                ),
+                child: Wrap(
+                  spacing: 20,
+                  runSpacing: 20,
+                  children: widget.listInfoCard,
+                )
 
-        ),
-        Container(
-          height: 30,
-          width: 100,
-          padding: EdgeInsets.only(left: 10),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                width: 1,
-                color: Colors.black54
-              )
-            )
-          ),
-          child: Text("Thống kê tuần", style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green),),
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10),
-          child: Text("Thống kê chi tiêu trong tháng ${ DateTime.now().month} theo tuần"),
-        ),
-        Container(
-            padding: EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 40),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              // color: kPrimaryColor.withOpacity(0.03),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(50),
-                bottomRight: Radius.circular(50),
+            ),
+            Container(
+              height: 30,
+              width: 100,
+              padding: EdgeInsets.only(left: 10),
+              decoration: BoxDecoration(
+                  border: Border(
+                      bottom: BorderSide(
+                          width: 1,
+                          color: Colors.black54
+                      )
+                  )
               ),
+              child: Text("Thống kê tuần", style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.green),),
             ),
-            child: BarChartThongKeThang(thongKeKhoanChi: widget.thongKeKhoanChi, thongKeKhoanThu: widget.thongKeKhoanThu,)
+            Padding(
+              padding: const EdgeInsets.only(left: 10),
+              child: Text("Thống kê chi tiêu trong tháng ${ DateTime.now().month} theo tuần"),
+            ),
+            Container(
+                padding: EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 40),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  // color: kPrimaryColor.withOpacity(0.03),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(50),
+                  ),
+                ),
+                child: BarChartThongKeThang(thongKeKhoanChi: widget.thongKeKhoanChi, thongKeKhoanThu: widget.thongKeKhoanThu,)
 
-        ),
+            ),
 
-      ],
+          ],
+        )
     );
 
   }

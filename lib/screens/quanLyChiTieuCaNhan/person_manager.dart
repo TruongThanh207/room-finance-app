@@ -34,8 +34,8 @@ class _PersonManagerState extends State<PersonManager> {
     // TODO: implement initState
     super.initState();
 
-  }
 
+  }
 
 
 
@@ -93,7 +93,7 @@ class _PersonManagerState extends State<PersonManager> {
   }
   loadDataThongKe({List<ItemLoaiKhoanChi> dsLoaiKhoanChi, List<KhoanChiCaNhan> dsKhoanChiCaNhan,List<KhoanThuCaNhan> dsKhoanThuCaNhan }){
     loadListInfoCard(
-        dsKhoanChiCaNhan: dsKhoanChiCaNhan,
+      dsKhoanChiCaNhan:dsKhoanChiCaNhan,
       dsLoaiKhoanChi: dsLoaiKhoanChi,
     );
     thongKeKhoanChi = Provider.of<CaNhanProviders>(context, listen: false).thongKeKhoanChi_Thang(dsKhoanChiCaNhan);
@@ -113,9 +113,9 @@ class _PersonManagerState extends State<PersonManager> {
               TongChi += double.parse(value.giaTien);
             }
           });
+
         }
       });
-      print(TongChi);
       listInfoCard.add(InfoCard(
         title: item.name,
         icon: item.icon,
@@ -135,6 +135,7 @@ class _PersonManagerState extends State<PersonManager> {
         break;
       case 2:
         Provider.of<HomeProviders>(context, listen: false).screen = 1;
+
 
         break;
       case 3:

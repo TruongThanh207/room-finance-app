@@ -25,7 +25,6 @@ class _ThongKeState extends State<ThongKe> with SingleTickerProviderStateMixin{
   void initState() {
     // TODO: implement initState
     super.initState();
-    print("run here: ${widget.dsThongKe}");
     _refreshController = RefreshController(initialRefresh: false);
    // _tabController1 = new TabController(vsync: this, length: 12);
     _tabController = new TabController(vsync: this, length: 2,initialIndex: 1);
@@ -64,171 +63,357 @@ class _ThongKeState extends State<ThongKe> with SingleTickerProviderStateMixin{
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
     GroupProviders _groups = Provider.of<GroupProviders>(context);
-    return ListView(
-      shrinkWrap: true,
-      children: [
-        SizedBox(height: 50,),
+    return SmartRefresher(
+        controller: _refreshController,
+        onRefresh: _onRefresh,
+        onLoading: _onLoading,
+        header: WaterDropMaterialHeader(
+        backgroundColor: Colors.green,
+    ),
+        footer: CustomFooter(
+        builder: (BuildContext context,LoadStatus mode){
+        Widget body ;
+          body =  CupertinoActivityIndicator();
+          return Container(
 
-        Container(height: 50,
-        child: TabBar(
-          controller: _tabController,
-            //isScrollable: true,
-            labelColor: Colors.black,
-            labelStyle: TextStyle(color:  Colors.black, fontSize: 16,fontWeight: FontWeight.bold),
-            tabs: <Tab>[
-             Tab(text: "Tháng trước",),
-              Tab(text: "Tháng này",),
-            ]
+            height: 55.0,
+            child: Center(child:body),
+        );
+        },
+        ),
+        enablePullUp: false,
+        enablePullDown: true,
+        child:  ListView(
+            shrinkWrap: true,
+            children: [
+            SizedBox(height: 50,),
+
+            Container(height: 50,
+              child: TabBar(
+              controller: _tabController,
+              //isScrollable: true,
+              labelColor: Colors.black,
+              labelStyle: TextStyle(color:  Colors.black, fontSize: 16,fontWeight: FontWeight.bold),
+              tabs: <Tab>[
+                Tab(text: "Tháng trước",),
+                Tab(text: "Tháng này",),
+        ]
         ),),
-        Container(
-         height: MediaQuery.of(context).size.height-100,
-          child: TabBarView(
+          Container(
+          height: MediaQuery.of(context).size.height-100,
+           child: TabBarView(
             controller: _tabController,
             children: [
-              Container(
-                padding: EdgeInsets.only(left: 5,right: 5,top: 20),
-                height: height/3,
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        width: width/2-20,
-                        // color: Colors.green,
-                        padding: EdgeInsets.only(left: 5),
-                        child: ListView.builder(
-                            itemCount: _groups.selectedGroup.members.length,
-                            itemBuilder: (_,index){
+               Container(
+              padding: EdgeInsets.only(left: 5,right: 5,top: 20),
+              height: height/3,
+              color: Colors.white,
+                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                       Container(
+                      width: width/2-20,
+                      // color: Colors.green,
+                      padding: EdgeInsets.only(left: 5),
+                          child: ListView.builder(
+                          itemCount: _groups.selectedGroup.members.length,
+                          itemBuilder: (_,index){
                               return (index%2 == 0) ? Column(
                                 children: [
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child:  RichText(
-                                      text: TextSpan(
-                                          text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
-                                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text: "${widget.dsThongKe[0][_groups.selectedGroup.members[index]]}K",
-                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
-                                            )
-                                          ]
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: _groups.selectedGroup.members.length/2*10,
-                                  )
-                                ],
-                              ):Container();
-                            })),
-                    Container(
+                               Container(
+                                alignment: Alignment.centerLeft,
+                                child:  RichText(
+                                text: TextSpan(
+                                text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+                        children: <TextSpan>[
+                        TextSpan(
+                        text: "${widget.dsThongKe[0][_groups.selectedGroup.members[index]]}K",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+                        )
+                        ]
+                        ),
+                        ),
+                        ),
+                        SizedBox(
+                        height: _groups.selectedGroup.members.length/2*10,
+                        )
+                        ],
+                        ):Container();
+                        })),
+                        Container(
                         width: width/2-20,
                         // color: Colors.blue,
                         padding: EdgeInsets.only(left: 5),
                         child: ListView.builder(
-                            itemCount: _groups.selectedGroup.members.length,
-                            itemBuilder: (_,index) {
+                        itemCount: _groups.selectedGroup.members.length,
+                        itemBuilder: (_,index) {
 
-                              return index%2!=0?Column(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: RichText(
-                                      text: TextSpan(
-                                          text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
-                                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text: "${widget.dsThongKe[0][_groups.selectedGroup.members[index]]}K",
-                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
-                                            )
-                                          ]
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: _groups.selectedGroup.members.length/2*10,
-                                  )
-                                ],
-                              ):Container();
-                            }))
-                  ],),
-              ),
-              Container(
-                padding: EdgeInsets.only(left: 5,right: 5,top: 20),
-                height: height/3,
-                color: Colors.white,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
+                        return index%2!=0?Column(
+                        children: [
+                        Container(
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                        text: TextSpan(
+                        text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+                        children: <TextSpan>[
+                        TextSpan(
+                        text: "${widget.dsThongKe[0][_groups.selectedGroup.members[index]]}K",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+                        )
+                        ]
+                        ),
+                        ),
+                        ),
+                        SizedBox(
+                        height: _groups.selectedGroup.members.length/2*10,
+                        )
+                        ],
+                        ):Container();
+                        }))
+                        ],),
+                        ),
+                        Container(
+                        padding: EdgeInsets.only(left: 5,right: 5,top: 20),
+                        height: height/3,
+                        color: Colors.white,
+                        child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        Container(
                         width: width/2-20,
                         // color: Colors.green,
                         padding: EdgeInsets.only(left: 5),
                         child: ListView.builder(
-                            itemCount: _groups.selectedGroup.members.length,
-                            itemBuilder: (_,index){
-                              return (index%2 == 0) ? Column(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child:  RichText(
-                                      text: TextSpan(
-                                          text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
-                                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text: "${widget.dsThongKe[1][_groups.selectedGroup.members[index]]}K",
-                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
-                                            )
-                                          ]
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: _groups.selectedGroup.members.length/2*10,
-                                  )
-                                ],
-                              ):Container();
-                            })),
-                    Container(
+                        itemCount: _groups.selectedGroup.members.length,
+                        itemBuilder: (_,index){
+                        return (index%2 == 0) ? Column(
+                        children: [
+                        Container(
+                        alignment: Alignment.centerLeft,
+                        child:  RichText(
+                        text: TextSpan(
+                        text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+                        children: <TextSpan>[
+                        TextSpan(
+                        text: "${widget.dsThongKe[1][_groups.selectedGroup.members[index]]}K",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+                        )
+                        ]
+                        ),
+                        ),
+                        ),
+                        SizedBox(
+                        height: _groups.selectedGroup.members.length/2*10,
+                        )
+                        ],
+                        ):Container();
+                        })),
+                        Container(
                         width: width/2-20,
                         // color: Colors.blue,
                         padding: EdgeInsets.only(left: 5),
                         child: ListView.builder(
-                            itemCount: _groups.selectedGroup.members.length,
-                            itemBuilder: (_,index) {
+                        itemCount: _groups.selectedGroup.members.length,
+                        itemBuilder: (_,index) {
 
-                              return index%2!=0?Column(
-                                children: [
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    child: RichText(
-                                      text: TextSpan(
-                                          text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
-                                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-                                          children: <TextSpan>[
-                                            TextSpan(
-                                              text: "${widget.dsThongKe[1][_groups.selectedGroup.members[index]]}K",
-                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
-                                            )
-                                          ]
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: _groups.selectedGroup.members.length/2*10,
-                                  )
-                                ],
-                              ):Container();
-                            }))
-                  ],),
-              ),
-            ],
-          ),
-        )
-      ],
+                        return index%2!=0?Column(
+                        children: [
+                        Container(
+                        alignment: Alignment.centerLeft,
+                        child: RichText(
+                        text: TextSpan(
+                        text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+                        children: <TextSpan>[
+                        TextSpan(
+                        text: "${widget.dsThongKe[1][_groups.selectedGroup.members[index]]}K",
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+                        )
+                        ]
+                        ),
+                        ),
+                        ),
+                        SizedBox(
+                        height: _groups.selectedGroup.members.length/2*10,
+                        )
+                        ],
+                        ):Container();
+    }))
+    ],),
+    ),
+    ],
+    ),
+    )
+    ],
+    ),
+//    return ListView(
+//      shrinkWrap: true,
+//      children: [
+//        SizedBox(height: 50,),
+//
+//        Container(height: 50,
+//        child: TabBar(
+//          controller: _tabController,
+//            //isScrollable: true,
+//            labelColor: Colors.black,
+//            labelStyle: TextStyle(color:  Colors.black, fontSize: 16,fontWeight: FontWeight.bold),
+//            tabs: <Tab>[
+//             Tab(text: "Tháng trước",),
+//              Tab(text: "Tháng này",),
+//            ]
+//        ),),
+//        Container(
+//         height: MediaQuery.of(context).size.height-100,
+//          child: TabBarView(
+//            controller: _tabController,
+//            children: [
+//              Container(
+//                padding: EdgeInsets.only(left: 5,right: 5,top: 20),
+//                height: height/3,
+//                color: Colors.white,
+//                child: Row(
+//                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                  children: [
+//                    Container(
+//                        width: width/2-20,
+//                        // color: Colors.green,
+//                        padding: EdgeInsets.only(left: 5),
+//                        child: ListView.builder(
+//                            itemCount: _groups.selectedGroup.members.length,
+//                            itemBuilder: (_,index){
+//                              return (index%2 == 0) ? Column(
+//                                children: [
+//                                  Container(
+//                                    alignment: Alignment.centerLeft,
+//                                    child:  RichText(
+//                                      text: TextSpan(
+//                                          text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
+//                                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+//                                          children: <TextSpan>[
+//                                            TextSpan(
+//                                              text: "${widget.dsThongKe[0][_groups.selectedGroup.members[index]]}K",
+//                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+//                                            )
+//                                          ]
+//                                      ),
+//                                    ),
+//                                  ),
+//                                  SizedBox(
+//                                    height: _groups.selectedGroup.members.length/2*10,
+//                                  )
+//                                ],
+//                              ):Container();
+//                            })),
+//                    Container(
+//                        width: width/2-20,
+//                        // color: Colors.blue,
+//                        padding: EdgeInsets.only(left: 5),
+//                        child: ListView.builder(
+//                            itemCount: _groups.selectedGroup.members.length,
+//                            itemBuilder: (_,index) {
+//
+//                              return index%2!=0?Column(
+//                                children: [
+//                                  Container(
+//                                    alignment: Alignment.centerLeft,
+//                                    child: RichText(
+//                                      text: TextSpan(
+//                                          text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
+//                                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+//                                          children: <TextSpan>[
+//                                            TextSpan(
+//                                              text: "${widget.dsThongKe[0][_groups.selectedGroup.members[index]]}K",
+//                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+//                                            )
+//                                          ]
+//                                      ),
+//                                    ),
+//                                  ),
+//                                  SizedBox(
+//                                    height: _groups.selectedGroup.members.length/2*10,
+//                                  )
+//                                ],
+//                              ):Container();
+//                            }))
+//                  ],),
+//              ),
+//              Container(
+//                padding: EdgeInsets.only(left: 5,right: 5,top: 20),
+//                height: height/3,
+//                color: Colors.white,
+//                child: Row(
+//                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                  children: [
+//                    Container(
+//                        width: width/2-20,
+//                        // color: Colors.green,
+//                        padding: EdgeInsets.only(left: 5),
+//                        child: ListView.builder(
+//                            itemCount: _groups.selectedGroup.members.length,
+//                            itemBuilder: (_,index){
+//                              return (index%2 == 0) ? Column(
+//                                children: [
+//                                  Container(
+//                                    alignment: Alignment.centerLeft,
+//                                    child:  RichText(
+//                                      text: TextSpan(
+//                                          text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
+//                                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+//                                          children: <TextSpan>[
+//                                            TextSpan(
+//                                              text: "${widget.dsThongKe[1][_groups.selectedGroup.members[index]]}K",
+//                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+//                                            )
+//                                          ]
+//                                      ),
+//                                    ),
+//                                  ),
+//                                  SizedBox(
+//                                    height: _groups.selectedGroup.members.length/2*10,
+//                                  )
+//                                ],
+//                              ):Container();
+//                            })),
+//                    Container(
+//                        width: width/2-20,
+//                        // color: Colors.blue,
+//                        padding: EdgeInsets.only(left: 5),
+//                        child: ListView.builder(
+//                            itemCount: _groups.selectedGroup.members.length,
+//                            itemBuilder: (_,index) {
+//
+//                              return index%2!=0?Column(
+//                                children: [
+//                                  Container(
+//                                    alignment: Alignment.centerLeft,
+//                                    child: RichText(
+//                                      text: TextSpan(
+//                                          text: "${_groups.listName[_groups.selectedGroup.members[index]]}: ",
+//                                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+//                                          children: <TextSpan>[
+//                                            TextSpan(
+//                                              text: "${widget.dsThongKe[1][_groups.selectedGroup.members[index]]}K",
+//                                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.red),
+//                                            )
+//                                          ]
+//                                      ),
+//                                    ),
+//                                  ),
+//                                  SizedBox(
+//                                    height: _groups.selectedGroup.members.length/2*10,
+//                                  )
+//                                ],
+//                              ):Container();
+//                            }))
+//                  ],),
+//              ),
+//            ],
+//          ),
+//        )
+//      ],
     );
 
   }

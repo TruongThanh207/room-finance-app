@@ -42,7 +42,7 @@ class _PersonManagerState extends State<PersonManager> {
   Widget _changePage(int page, status, dsKT, dsKC){
     switch(page){
       case 2:
-        return KhoanThu(dsKhoanThu: dsKT,);
+        return KhoanThu(dsKhoanThu: dsKT, user: widget.user,);
       case 1:
         return KhoanChi(
           dsKhoanChi: dsKC,

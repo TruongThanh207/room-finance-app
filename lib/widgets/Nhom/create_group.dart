@@ -226,9 +226,11 @@ class _CreateGroupState extends State<CreateGroup> {
                       color: Color(0xFF1BAC98),
                       child: Text("THÊM", style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.white),),
                       onPressed: () {
+
                         String idGroup =  FirebaseFirestore.instance.collection("Groups").doc().id;
                         _group.addNewGroup(idGroup,_image, nameGroupController.text,fundGroupController.text, listIdMember, widget.user);
-                        // _group.getListGroup(widget.user);
+                        //Provider.of<GroupProviders>(context, listen: false).getListGroup(widget.user);
+                        _group.getListGroup(widget.user);
                         nameGroupController.clear();
                         listMember.clear();
                         listIdMember.clear();

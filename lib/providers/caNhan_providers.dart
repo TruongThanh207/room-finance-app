@@ -75,6 +75,7 @@ class CaNhanProviders with ChangeNotifier {
             for(int j = 0; j<item.docs.length;j++){
               dsItem.add(ItemKhoanThuCaNhan.fromJson(item.docs[j].data()));
             }
+            print(value.docs.length);
             notifyListeners();
           });
 

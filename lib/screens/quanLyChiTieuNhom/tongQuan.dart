@@ -87,6 +87,26 @@ class _TongQuanState extends State<TongQuan> {
             color: Colors.white,
             borderRadius: BorderRadius.circular(20)
         ),
+        child: SmartRefresher(
+        // key: _key,
+          controller: _refreshController,
+          onRefresh: _onRefresh,
+          onLoading: _onLoading,
+          header: WaterDropMaterialHeader(
+          backgroundColor: Colors.green,
+          ),
+          footer: CustomFooter(
+          builder: (BuildContext context,LoadStatus mode){
+          Widget body ;
+          body =  CupertinoActivityIndicator();
+          return Container(
+          height: 55.0,
+          child: Center(child:body),
+          );
+          },
+          ),
+          enablePullUp: false,
+          enablePullDown: true,
         child: Form(
           key: _formKey,
           child: Column(
@@ -215,6 +235,7 @@ class _TongQuanState extends State<TongQuan> {
             ],
           ),
         ),
+      ),
       ),
     );
   }

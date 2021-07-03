@@ -59,13 +59,34 @@ class _KhoanChiState extends State<KhoanChi> {
       child: _groups.status==Status.Loading?Center(
         child: CircularProgressIndicator(
         ),
-      ):dsKhoanChi.length<=0?Center(child: Text("Không có dữ liệu!",style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.black),),):ListView.builder(
-        padding: EdgeInsets.only(bottom: 40),
-          shrinkWrap: true,
-          itemCount: (dsKhoanChi != null)?dsKhoanChi.length : 0,
-          itemBuilder: (value, index){
-            return ItemExpensesGroup(dsItem: dsKhoanChi[index].listItemKhoanChi,ngayMua: dsKhoanChi[index].ngayMua,);
-          }
+      ):SmartRefresher(
+        controller: _refreshController,
+        onRefresh: _onRefresh,
+        onLoading: _onLoading,
+        header: WaterDropMaterialHeader(
+          backgroundColor: Colors.green,
+        ),
+        footer: CustomFooter(
+          builder: (BuildContext context,LoadStatus mode){
+            Widget body ;
+            body =  CupertinoActivityIndicator();
+            return Container(
+
+              height: 55.0,
+              child: Center(child:body),
+            );
+          },
+        ),
+        enablePullUp: false,
+        enablePullDown: true,
+        child:  dsKhoanChi.length<=0?Center(child: Text("Không có dữ liệu!",style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Colors.black),),):ListView.builder(
+            padding: EdgeInsets.only(bottom: 40),
+            shrinkWrap: true,
+            itemCount: (dsKhoanChi != null)?dsKhoanChi.length : 0,
+            itemBuilder: (value, index){
+              return ItemExpensesGroup(dsItem: dsKhoanChi[index].listItemKhoanChi,ngayMua: dsKhoanChi[index].ngayMua,);
+            }
+        ),
       ),
     );
   }

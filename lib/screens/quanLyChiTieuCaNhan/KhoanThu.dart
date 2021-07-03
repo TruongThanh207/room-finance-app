@@ -4,27 +4,37 @@ import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:room_financal_manager/config/initialization.dart';
 import 'package:room_financal_manager/models/KhoanThuCaNhan.dart';
+import 'package:room_financal_manager/models/user.dart';
 import 'package:room_financal_manager/providers/caNhan_providers.dart';
 import 'package:room_financal_manager/widgets/CaNhan/item_KhoanThu_CaNhan.dart';
 
 class KhoanThu extends StatefulWidget {
-  RefreshController refreshController;
   List<KhoanThuCaNhan> dsKhoanThu;
-  KhoanThu({this.dsKhoanThu, this.refreshController});
+  UserData user;
+  KhoanThu({this.dsKhoanThu, this.user});
   @override
   _KhoanThuState createState() => _KhoanThuState();
 }
 
 class _KhoanThuState extends State<KhoanThu> {
   RefreshController _refreshController;
+  List<KhoanThuCaNhan> _dsKhoanThu = [];
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _refreshController = RefreshController(initialRefresh: false);
+    _dsKhoanThu = widget.dsKhoanThu;
   }
   void _onRefresh() async{
     await Future.delayed(Duration(milliseconds: 1000));
+    _dsKhoanThu.clear();
+    await Provider.of<CaNhanProviders>(context,listen: false).danhSachKhoanThu(widget.user.id).then((value) {
+      _dsKhoanThu =  Provider.of<CaNhanProviders>(context,listen: false).dsKhoanThuCaNhan;
+    });
+    setState(() {
+
+    });
     _refreshController.refreshCompleted();
   }
 
@@ -83,8 +93,8 @@ class _KhoanThuState extends State<KhoanThu> {
                 }
             ),
           ],
-          ),
         ),
+      ),
     );
   }
 }

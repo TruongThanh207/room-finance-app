@@ -30,17 +30,22 @@ class PersonalPage extends StatefulWidget {
 
 class _PersonalPageState extends State<PersonalPage> {
 
+
+
   SecureStorage secureStorage = SecureStorage();
   final _key = GlobalKey<ScaffoldState>();
   UserData _account;
+  List<InformationGroup> _dsNhom = [];
   Authentication authentication = Authentication();
 
   List<Widget> listGroups = [];
   List<Widget> loadDanhSachNhom(GroupProviders _groups){
+
     List<Widget> ds = [];
    _groups.dsNhom.forEach((item) {
       ds.add(itemNhom(item));
     });
+
 
    setState(() {
      listGroups = ds;
@@ -120,7 +125,6 @@ class _PersonalPageState extends State<PersonalPage> {
         _account = UserData.formSnapShot(value);
       });
     });
-
   }
   @override
   void dispose() {

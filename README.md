@@ -31,50 +31,50 @@
    ###	Đăng ký và Đăng nhập
     
    <p align="center">
-    <img src="https://user-images.githubusercontent.com/45113398/124256751-d78d5900-db55-11eb-884b-bc41d84e421f.jpg" height = "480" width="270"> 
-    <img src="https://user-images.githubusercontent.com/45113398/124256753-d825ef80-db55-11eb-8135-869c87fd0e36.jpg" height = "480" width="270"> 
-    <img src="https://user-images.githubusercontent.com/45113398/124256734-d2300e80-db55-11eb-9053-b489cbec39ee.jpg" height = "480" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124256751-d78d5900-db55-11eb-884b-bc41d84e421f.jpg" height = "520" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124256753-d825ef80-db55-11eb-8135-869c87fd0e36.jpg" height = "520" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124256734-d2300e80-db55-11eb-9053-b489cbec39ee.jpg" height = "520" width="270"> 
    </p>
    
     
    ###	Tạo nhóm
    
    <p align="center">
-    <img src="https://user-images.githubusercontent.com/45113398/124364867-80c77280-dc6e-11eb-8679-5eea35963a56.jpg" height = "480" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124364867-80c77280-dc6e-11eb-8679-5eea35963a56.jpg" height = "520" width="270"> 
    </p>
    
 
    ###	Quản lý thông tin khoản chi nhóm và cá nhân
    
    <p align="center">
-    <img src="https://user-images.githubusercontent.com/45113398/124364883-9d63aa80-dc6e-11eb-917e-ccba2590b1db.jpg" height = "480" width="270"> 
-    <img src="https://user-images.githubusercontent.com/45113398/124364891-a18fc800-dc6e-11eb-8099-a67bebec3a24.jpg" height = "480" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124364883-9d63aa80-dc6e-11eb-917e-ccba2590b1db.jpg" height = "520" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124364891-a18fc800-dc6e-11eb-8099-a67bebec3a24.jpg" height = "520" width="270"> 
    </p>
 
    ###	Tạo khoản chi và khoản thu
    
    <p align="center">
-    <img src="https://user-images.githubusercontent.com/45113398/124364919-eca9db00-dc6e-11eb-96ac-3ae3f74e76ca.jpg" height = "480" width="270"> 
-    <img src="https://user-images.githubusercontent.com/45113398/124364918-eb78ae00-dc6e-11eb-95fd-ab0186cfd1ab.jpg" height = "480" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124364919-eca9db00-dc6e-11eb-96ac-3ae3f74e76ca.jpg" height = "520" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124364918-eb78ae00-dc6e-11eb-95fd-ab0186cfd1ab.jpg" height = "520" width="270"> 
    </p>
 
    ###	Quản lý thông tin tổng quan của nhóm
    
    <p align="center">
-    <img src="https://user-images.githubusercontent.com/45113398/124364925-fb908d80-dc6e-11eb-88a5-80dd0ad46ce9.jpg" height = "480" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124364925-fb908d80-dc6e-11eb-88a5-80dd0ad46ce9.jpg" height = "520" width="270"> 
    </p>
 
    ###	Thống kê khoản chi 
    
    <p align="center">
-    <img src="https://user-images.githubusercontent.com/45113398/124364936-106d2100-dc6f-11eb-938a-e9e9dcb178b4.jpg" height = "480" width="270"> 
-    <img src="https://user-images.githubusercontent.com/45113398/124364939-119e4e00-dc6f-11eb-97f6-f94d62855fc2.jpg" height = "480" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124364936-106d2100-dc6f-11eb-938a-e9e9dcb178b4.jpg" height = "520" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124364939-119e4e00-dc6f-11eb-97f6-f94d62855fc2.jpg" height = "520" width="270"> 
    </p>
    
    ### Chi tiết khoản thu & chi 
      
    <p align="center">
-    <img src="https://user-images.githubusercontent.com/45113398/124364993-6cd04080-dc6f-11eb-9126-70d43ee49e95.jpg" height = "480" width="270"> 
+    <img src="https://user-images.githubusercontent.com/45113398/124364993-6cd04080-dc6f-11eb-9126-70d43ee49e95.jpg" height = "520" width="270"> 
    </p>
  
 

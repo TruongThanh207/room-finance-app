@@ -30,9 +30,12 @@
 
    ###	Đăng ký và Đăng nhập
     
-   ![2](https://user-images.githubusercontent.com/45113398/124256751-d78d5900-db55-11eb-884b-bc41d84e421f.jpg)
-   ![3](https://user-images.githubusercontent.com/45113398/124256753-d825ef80-db55-11eb-8135-869c87fd0e36.jpg)
-   ![1](https://user-images.githubusercontent.com/45113398/124256734-d2300e80-db55-11eb-9053-b489cbec39ee.jpg)
+   <p align="center">
+    <img src="https://user-images.githubusercontent.com/45113398/124256751-d78d5900-db55-11eb-884b-bc41d84e421f.jpg" height = "480" width="270"> <img src="screenshots/register.png" height = "480" width="270">
+    <img src="https://user-images.githubusercontent.com/45113398/124256753-d825ef80-db55-11eb-8135-869c87fd0e36.jpg" height = "480" width="270"> <img src="screenshots/register.png" height = "480" width="270">
+    <img src="https://user-images.githubusercontent.com/45113398/124256734-d2300e80-db55-11eb-9053-b489cbec39ee.jpg" height = "480" width="270"> <img src="screenshots/register.png" height = "480" width="270">
+   </p>
+   
     
    ###	Tạo nhóm
    

@@ -7,6 +7,7 @@ import 'package:room_financal_manager/models/KhoanThuCaNhan.dart';
 import 'package:room_financal_manager/models/user.dart';
 import 'package:room_financal_manager/providers/caNhan_providers.dart';
 import 'package:room_financal_manager/providers/home_provider.dart';
+import 'package:room_financal_manager/providers/user_provider.dart';
 import 'package:room_financal_manager/screens/quanLyChiTieuCaNhan/KhoanThu.dart';
 import 'package:room_financal_manager/screens/quanLyChiTieuCaNhan/khoanChi.dart';
 import 'package:room_financal_manager/screens/quanLyChiTieuCaNhan/thongKe.dart';
@@ -27,6 +28,7 @@ class _PersonManagerState extends State<PersonManager> {
   List<Widget> listInfoCard = List(); //ds thống kê theo loại chi tiêu
   List<double> thongKeKhoanChi = [];
   List<double> thongKeKhoanThu = [];
+
   @override
   void initState() {
     // TODO: implement initState
@@ -113,6 +115,7 @@ class _PersonManagerState extends State<PersonManager> {
           });
         }
       });
+      print(TongChi);
       listInfoCard.add(InfoCard(
         title: item.name,
         icon: item.icon,

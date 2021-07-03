@@ -113,6 +113,7 @@ class UserProvider with ChangeNotifier {
          'password': password,
          'avatar':"",
          'cover':"",
+         'money':"",
        });
          return true;
        }
@@ -262,6 +263,19 @@ Future<void> loginWithGoogle({BuildContext context, Function success}) async {
         notifyListeners();
       });
       return member;
+    }catch(e){
+      print(e);
+    }
+
+  }
+
+  Future<UserData> getDataById(String id) async {
+    try{
+      UserData u;
+       u = await FirebaseFirestore.instance.collection("Users").doc(id).get().then((value) {
+      u = UserData.formSnapShot(value);
+      });
+      return u;
     }catch(e){
       print(e);
     }

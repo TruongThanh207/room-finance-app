@@ -288,7 +288,6 @@ class _UpdateTongQuanState extends State<UpdateTongQuan> {
                     borderRadius: BorderRadius.all(Radius.circular(25))),
                 onPressed: (){
 
-
                 },
                 color: Colors.green,
                 child: Text("Xong",style: TextStyle(fontSize: 18,color: Colors.white,fontWeight: FontWeight.bold),),

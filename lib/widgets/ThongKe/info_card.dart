@@ -22,6 +22,7 @@ class InfoCard extends StatelessWidget {
     this.press,
   }) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(

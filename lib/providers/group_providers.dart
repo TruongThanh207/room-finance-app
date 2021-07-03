@@ -255,10 +255,11 @@ class GroupProviders with ChangeNotifier {
 Future<void> addNewGroup(String idGroup, File avatar, String nameGroup,String fundGroup, List<String> members, UserData creator )async {
 
 try{
+  var money = double.parse(fundGroup);
   Map<String, String> detailMoney = Map.fromIterable(
       members,
       key: (k) => k.toString(),
-      value: (v) =>"0");
+      value: (v) =>"${money/members.length}");
   members.forEach((item) {
     FirebaseFirestore.instance.collection("Users").doc(item).update({
       "idGroup":FieldValue.arrayUnion([idGroup]),

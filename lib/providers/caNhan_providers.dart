@@ -287,10 +287,10 @@ class CaNhanProviders with ChangeNotifier {
 
   ///Thêm khoản chi cá nhân
   Future<void> themKhoanChi(String idUser,String iconLoai, String tenLoai, String noiDung, String giaTien,
-      String ngayMua,File image, String ghiChu ) async {
+      String ngayMua,File image, String ghiChu,  ) async {
     try{
 
-
+      String oldMoney;
         Map<String,dynamic> data = {
           "iconLoai":iconLoai,
           "tenLoai":tenLoai,
@@ -299,10 +299,14 @@ class CaNhanProviders with ChangeNotifier {
           "hoaDon":"",
           "ghiChu":ghiChu
         };
-
+        await FirebaseFirestore.instance.collection("Users").doc(idUser).get().then((value) {
+          oldMoney = value.data()["money"];
+        });
       await FirebaseFirestore.instance.collection("Users/$idUser/KhoanChi").doc(ngayMua).get().then((value){
 
         if(value.data()==null){
+
+
           FirebaseFirestore.instance.collection("Users/$idUser/KhoanChi").doc(ngayMua).set({
             "id":ngayMua,
             "ngayMua":ngayMua,
@@ -323,10 +327,15 @@ class CaNhanProviders with ChangeNotifier {
             uploadImage(image,"Users/$idUser/KhoanChi/$ngayMua/data", id);
           }
         }
+
       });
 
-
+        double m = double.parse(oldMoney) -  double.parse(giaTien);
+        FirebaseFirestore.instance.collection("Users").doc(idUser).update({
+          "money":m.toString(),
+        });
     }catch(e){
+      print(e);
       return false;
     }
   }
@@ -344,18 +353,24 @@ class CaNhanProviders with ChangeNotifier {
  }
   ///Thêm khoản thu cá nhân
   Future<void> themKhoanThu(String idUser, String noiDung, String soTien,
-      String ngayLap,File image, String ghiChu ) async {
+      String ngayLap,File image, String ghiChu,) async {
     try{
       String url = "";
+      String oldMoney;
       Map<String,dynamic> data = {
         "noiDung":noiDung,
         "soTien":soTien,
         "hoaHon":url,
         "ghiChu":ghiChu
       };
+      await FirebaseFirestore.instance.collection("Users").doc(idUser).get().then((value) {
+       oldMoney = value.data()["money"];
+    });
       await FirebaseFirestore.instance.collection("Users/$idUser/KhoanThu").doc(ngayLap).get().then((value){
 
         if(value.data()==null){
+
+
           FirebaseFirestore.instance.collection("Users/$idUser/KhoanThu").doc(ngayLap).set({
             "id":ngayLap,
             "ngayLap":ngayLap,
@@ -377,6 +392,11 @@ class CaNhanProviders with ChangeNotifier {
         }
       });
 
+      var m = double.parse(oldMoney)+ double.parse(soTien);
+      print("$oldMoney + $soTien = $m}");
+      FirebaseFirestore.instance.collection("Users").doc(idUser).update({
+        "money":m.toString(),
+      });
     }catch(e){
       return false;
     }

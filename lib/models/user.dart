@@ -41,7 +41,7 @@ class UserData {
     _urlAvt = data["avatar"];
     _urlCover = data["cover"];
     _idGroup = List.castFrom(data["idGroup"]);
-    _money = data["money"];
+    _money = data["money"].toString();
 
   }
 

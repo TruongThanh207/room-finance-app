@@ -133,7 +133,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                     title:  Center(
                         child: Text("Hỗ trợ", style: TextStyle(color: Colors.blue[900], fontSize: 22, fontWeight: FontWeight.bold),)),
                     content: Container(
-                        height: 100,
+                        height: 200,
                         color: Colors.white,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -141,8 +141,9 @@ class _DrawerMenuState extends State<DrawerMenu> {
                             Text("Bạn đang gặp sự cố?"),
                             Text(" Liên hệ ngay với chúng tôi!"),
                             SizedBox(height: 20,),
-                            Text("Minh Hồng: 0377846295"),
-                            Text("Trương Nam: 0973214133")
+                            Text("17521062 - Trương Văn Thành"),
+                            Text("17520916 - Nguyễn Duy Phước"),
+                            Text("17520906 - Nguyễn Đức Phúc")
                           ],)
                     ),contentPadding: EdgeInsets.all(0),
 
@@ -188,8 +189,9 @@ class _DrawerMenuState extends State<DrawerMenu> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("17520526 - Hoàng Minh Hồng"),
-                            Text("17520785 - Trương Nguyễn Tuấn Nam")
+                            Text("17521062 - Trương Văn Thành"),
+                            Text("17520916 - Nguyễn Duy Phước"),
+                            Text("17520906 - Nguyễn Đức Phúc")
                           ],)
                     ),contentPadding: EdgeInsets.all(0),
 

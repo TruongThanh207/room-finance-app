@@ -53,17 +53,38 @@ class _KhoanThuState extends State<KhoanThu> {
       padding: const EdgeInsets.only(top: 50),
       child: _person.status==Status.Loading?CircularProgressIndicator(
         backgroundColor: Colors.white,
-      ):Column(
-        children: [
-          ListView.builder(
-              shrinkWrap: true,
-              itemCount: (widget.dsKhoanThu != null)?widget.dsKhoanThu.length : 0,
-              itemBuilder: (value, index){
-                return ItemRevenuePerson(dsItem: widget.dsKhoanThu[index].listItemKhoanThu,ngayThu: widget.dsKhoanThu[index].ngayLap,);
-              }
+      ):SmartRefresher(
+        controller: _refreshController,
+        onRefresh: _onRefresh,
+        onLoading: _onLoading,
+        header: WaterDropMaterialHeader(
+          backgroundColor: Colors.green,
+        ),
+        footer: CustomFooter(
+          builder: (BuildContext context,LoadStatus mode){
+            Widget body ;
+            body =  CupertinoActivityIndicator();
+            return Container(
+
+              height: 55.0,
+              child: Center(child:body),
+            );
+          },
+        ),
+        enablePullUp: false,
+        enablePullDown: true,
+        child: Column(
+          children: [
+            ListView.builder(
+                shrinkWrap: true,
+                itemCount: (widget.dsKhoanThu != null)?widget.dsKhoanThu.length : 0,
+                itemBuilder: (value, index){
+                  return ItemRevenuePerson(dsItem: widget.dsKhoanThu[index].listItemKhoanThu,ngayThu: widget.dsKhoanThu[index].ngayLap,);
+                }
+            ),
+          ],
           ),
-        ],
-      ),
+        ),
     );
   }
 }

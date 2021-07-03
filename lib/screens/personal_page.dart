@@ -32,6 +32,7 @@ class _PersonalPageState extends State<PersonalPage> {
 
   SecureStorage secureStorage = SecureStorage();
   final _key = GlobalKey<ScaffoldState>();
+  UserData _account;
   Authentication authentication = Authentication();
 
   List<Widget> listGroups = [];
@@ -105,10 +106,20 @@ class _PersonalPageState extends State<PersonalPage> {
       ),
     );
   }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+
+    loadInitData();
+  }
+  loadInitData()async{
+    await FirebaseFirestore.instance.collection("Users").doc(widget.user.id).get().then((value) {
+      setState(() {
+        _account = UserData.formSnapShot(value);
+      });
+    });
 
   }
   @override
@@ -250,7 +261,7 @@ class _PersonalPageState extends State<PersonalPage> {
                       style: TextStyle(
                           fontSize: 20, fontWeight: FontWeight.normal),
                     ),
-                    Text("${_user.userData.money} vnđ",
+                    Text(_account!=null?"${_account.money} vnd":"0 vnd",
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -371,7 +382,7 @@ class _PersonalPageState extends State<PersonalPage> {
                     Text("Bạn đang gặp sự cố?"),
                     Text(" Liên hệ ngay với chúng tôi!"),
                     SizedBox(height: 20,),
-                      Text("17521062 - Trương ăn Thành"),
+                      Text("17521062 - Trương Văn Thành"),
                       Text("17520916 - Nguyễn Duy Phước"),
                       Text("17520906 - Nguyễn Đức Phúc")
                     ],)
@@ -422,7 +433,7 @@ class _PersonalPageState extends State<PersonalPage> {
                     child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    Text("17521062 - Trương ăn Thành"),
+                    Text("17521062 - Trương Văn Thành"),
                     Text("17520916 - Nguyễn Duy Phước"),
                       Text("17520906 - Nguyễn Đức Phúc")
                     ],)

@@ -1,6 +1,6 @@
 # Ứng dụng Quản Lý Chi Tiêu
 
-Ứng dụng cho phép quản lý chi tiêu trong phòng.
+Ứng dụng cho phép quản lý chi tiêu cá nhân hoặc một nhóm.
 
 ## Nội Dung
 
